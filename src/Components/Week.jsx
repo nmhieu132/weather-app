@@ -1,8 +1,8 @@
 import { Grid, Paper } from "@mui/material";
-import { useSelector } from "react-redux";
 import { makeStyles } from "@mui/styles";
-import datetime from "../helper/datetime";
-import {useState} from 'react'
+import { useState } from 'react';
+import { useSelector } from "react-redux";
+import datetime from "../helper/datetime"
 const useStyles = makeStyles({
   grid_item: {
     padding: "0 10px",
@@ -63,8 +63,7 @@ function Week() {
   const classes = useStyles();
   const [weatherDetail,setWeatherDetail]=useState(
       weather?.daily?.[0]
-  );
-  console.log(weatherDetail)
+  )
   const handleChangeWdetail= (weather) => {
       setWeatherDetail(weather)
   }
@@ -99,7 +98,7 @@ function Week() {
       </Grid>
       <Grid className={classes.detail}>
         <Paper className={classes.detail_paper}>
-          <div className={classes.detail_header}>Thu, 19/5</div>
+          <div className={classes.detail_header}>{datetime.convertDtToDay(weatherDetail.dt)}</div>
           <Grid
             className={classes.detail_content}
             container

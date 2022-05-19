@@ -5,7 +5,11 @@ const datetime={
         const day = daily[date.getDay()]
         const hour =date.getHours()
         const min=(date.getHours()>12) ? `${date.getMinutes()} pm` : `${date.getMinutes()} am`
-        return `${day}, ${hour} : ${min}`;
+        return `${day}, ${hour}:${min}`;
+    },
+    convertDtToDayNum: (dt)=>{
+        const date=new Date(dt*1000);
+        return date.getDay();
     },
     convertDtToDay: (dt)=>{
         const date=new Date(dt*1000);
