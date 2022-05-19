@@ -1,6 +1,5 @@
 import {TextField} from '@mui/material'
 import {makeStyles} from '@mui/styles'
-import Cloudy from '../img/Cloudy.png'
 import { useDispatch, useSelector } from 'react-redux';
 import datetime from '../helper/datetime'
 import { getWeatherAsync } from '../Redux/weatherReducer';

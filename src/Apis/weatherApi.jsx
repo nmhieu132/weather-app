@@ -13,5 +13,6 @@ const weatherApi= {
         });
         return weather.data;
     },
+    
 };
 export default weatherApi

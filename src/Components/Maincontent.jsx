@@ -1,11 +1,11 @@
-import {Box} from '@mui/material'
+import { Box, Tab, Tabs, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
-import {useState} from 'react'
-import { Tab,Tabs } from '@mui/material';
-import {Typography} from '@mui/material'
-import Today from './Today'
-import Week from './Week'
-import Hour from './Hour'
+import { useState } from 'react';
+import Hour from './Hour';
+import Today from './Today';
+import Week from './Week';
+import {makeStyles} from '@mui/styles'
+import { fontWeight } from '@mui/system';
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
   
@@ -38,16 +38,34 @@ function TabPanel(props) {
       'aria-controls': `simple-tabpanel-${index}`,
     };
   } 
+  const useStyles = makeStyles({
+      tab:{
+        '& button':{
+          color: '#6c757d',
+          fontWeight: 'bold',
+        },
+        '& .Mui-selected':{
+          color: '#333',
+          '& span':{
+            
+          }
+        },
+        '& .css-1aquho2-MuiTabs-indicator':{
+          backgroundColor:'#333'
+      }
+      },
+
+  })
 function Maincontent(){
     const [value, setValue] = useState(0);
-
+    const classes=useStyles();
     const handleChange = (event, newValue) => {
     setValue(newValue);
     };
     return(
         <>
         <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
-            <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+            <Tabs className={classes.tab} value={value} onChange={handleChange} aria-label="basic tabs example">
                 <Tab label="Today" {...a11yProps(0)}/>
                 <Tab label="Week" {...a11yProps(1)}/>
                 <Tab label="Hour" {...a11yProps(2)}/>

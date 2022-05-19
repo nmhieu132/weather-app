@@ -1,14 +1,11 @@
-import {Grid, Paper} from '@mui/material'
-import {Box} from '@mui/material'
-import {makeStyles} from '@mui/styles'
+import { Box, Grid, Paper } from '@mui/material'
+import { makeStyles } from '@mui/styles'
+import { BiWind } from 'react-icons/bi'
+import { BsSun, BsThermometerHalf } from 'react-icons/bs'
+import { MdVisibility } from 'react-icons/md'
+import { WiHumidity, WiSunrise, WiSunset } from 'react-icons/wi'
 import { useSelector } from 'react-redux'
-import Sunny from '../img/Sunny.png'
-import {grey} from '@mui/material/colors'
-import { fontWeight } from '@mui/system'
-import {BsSun, BsThermometerHalf} from 'react-icons/bs'
-import {BiWind} from 'react-icons/bi'
-import {WiHumidity} from 'react-icons/wi'
-import {MdVisibility} from 'react-icons/md'
+import datetime from '../helper/datetime'
 
 
 const useStyles = makeStyles({
@@ -19,6 +16,7 @@ const useStyles = makeStyles({
     },
     block:{
         padding: '15px',
+        height: '100%'
     },
     illus_img: {
         fontSize: "60px",
@@ -31,11 +29,23 @@ const useStyles = makeStyles({
         fontWeight: 'bold',
         margin:'0 auto',
         width:'fit-content'
-    }
+    },
+    sun:{
+        display: 'flex',
+        alignItems:'center',
+        paddingTop:'15px',
+        '& p':{
+            marginLeft:'8px',
+            color: '#6c757d',
+            fontSize: '1.15rem',
+            fontWeight: '600'
+        }
+    },
+    
 })
 function Today() {
     const classes=  useStyles();
-    const weather =useSelector(state => state.weather.weather);
+    const weather = useSelector(state => state.weather.weather);
     return ( 
         <>
         <Box sx={{ width: '100%' }}>
@@ -56,9 +66,16 @@ function Today() {
             </Grid>
             <Grid item xs={4}>
                 <Paper className={classes.block}>
-                    <div className={classes.descript}>UV index</div>
-                    <BsSun className={classes.illus_img} color="#ffc107"/>
-                    <div className={classes.num}>{weather?.current?.uvi}</div>
+                    <div className={classes.descript}>Sunrise & Sunset</div>
+                    
+                    <div className={classes.sun}>
+                        <WiSunrise className={classes.sun_sunrise} size='45px' color="#ffc107"/>
+                        <p>Sunrise: {datetime.convertDtToOclock(weather?.current?.sunrise)} </p>
+                    </div>
+                    <div className={classes.sun}>
+                        <WiSunset className={classes.sun_sunset} size='45px' color="#ffc107"/>
+                        <p>Sunset: {datetime.convertDtToOclock(weather?.current?.sunset)}</p>
+                    </div>
                 </Paper>
             </Grid>
             <Grid item xs={4}>

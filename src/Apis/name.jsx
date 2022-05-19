@@ -9,8 +9,7 @@ const name= {
             appid: apiKey,
         },
     });
-    console.log(name)
-    return name.data?.[0].local_names.vi;
+    return name.data?.[0].local_names.vi || name.data?.[0].local_names.en;
 },
     GET_LATLON: async (params) => {
     const latlon = await axios.get(urls.latlon, {
@@ -18,8 +17,8 @@ const name= {
             ...params,
             appid: apiKey,
         },
-    });
-    console.log(latlon.data?.[0].lat)
+    }
+    );
     return {lat: latlon.data?.[0].lat, lon: latlon.data?.[0].lon};
 }
 }
