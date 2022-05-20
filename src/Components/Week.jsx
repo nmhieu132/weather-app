@@ -52,11 +52,7 @@ const useStyles = makeStyles({
     '& [class*="day"]':{
         color:'#ec6e4c',
     },
-    
-
-
   }
-  
 });
 function Week() {
   const weather = useSelector((state) => state.weather.weather);
@@ -84,7 +80,7 @@ function Week() {
                 <div className={classes.content}>
                   <img
                     className={classes.icon}
-                    src={`http://openweathermap.org/img/wn/${w.weather?.[0].icon}@2x.png`}
+                    src={`http://openweathermap.org/img/wn/${w.weather?.[0  ].icon}@2x.png`}
                     alt=""
                   />
                   <div
